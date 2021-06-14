@@ -4,10 +4,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   particleSystem = new ParticleSystem();
   effectManager = new EffectManager();
-  grid = new Grid(100 , 5);
+  grid = new Grid(100, 5);
   player = new Player();
-  for (let i = 0; i < 100; i++) grid.add(i + 1, 5, new Color(111, 88 , 201))
-  grid.remove(61, 5)
+  for (let i = 0; i < 100; i++) grid.add(i + 1, 5, new Color(111, 88, 201));
+  grid.remove(61, 5);
   grid.remove(60, 5);
   grid.remove(59, 5);
   grid.remove(58, 5);
@@ -24,14 +24,14 @@ function setup() {
 function draw() {
   background(182, 184, 214);
   particleSystem.run();
-  player.update()
+  player.update();
   player.show();
-  grid.show()
+  grid.show();
   effectManager.show();
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight)
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 class Color {
