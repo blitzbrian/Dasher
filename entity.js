@@ -9,7 +9,7 @@ class Player {
   update() {
     if (!grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50)) this.acc.y += 0.1;
     else this.acc.y = 0;
-    if (grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && keyIsDown(32)) this.acc.y = -7.5;
+    if (grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && (keyIsDown(32) || mouseIsPressed)) this.acc.y = -7.5;
     this.vel.x += 15;
     this.vel.add(this.acc);
     this.vel.limit(10);
