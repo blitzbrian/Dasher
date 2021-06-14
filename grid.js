@@ -53,7 +53,7 @@ class Block {
   render() {
     if (this.showing) {
       push();
-      noStroke();
+      stroke(this.color.r, this.color.g, this.color.b);
       fill(this.color.r, this.color.g, this.color.b);
       rectMode(CENTER);
       rect(this.x, this.y, 100);
