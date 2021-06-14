@@ -1,7 +1,12 @@
-let particleSystem, effectManager, grid, player;
+let particleSystem, effectManager, grid, player, walk;
+
+function preload() {
+  walk = [loadImage('player0.png'), loadImage('player1.png'), loadImage('player2.png'), loadImage('player3.png')];
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  noSmooth();
   particleSystem = new ParticleSystem();
   effectManager = new EffectManager();
   grid = new Grid(100, 5);

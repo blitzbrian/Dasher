@@ -1,5 +1,6 @@
 class Player {
   constructor() {
+    this.animationIndex = 0;
     this.pos = createVector(0, height / 3.5);
     this.vel = createVector();
     this.acc = createVector();
@@ -7,6 +8,7 @@ class Player {
   }
 
   update() {
+    this.animationIndex += 0.0075 * deltaTime;
     if (!grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50)) this.acc.y += 0.1;
     else this.acc.y = 0;
     if (grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && (keyIsDown(32) || mouseIsPressed)) this.acc.y = -7.5;
@@ -18,10 +20,8 @@ class Player {
 
   show() {
     push();
-    noStroke();
-    fill(189, 237, 224);
-    rectMode(CENTER);
-    rect(this.cameraOffset, this.pos.y + 15, 50, 50);
+    imageMode(CENTER);
+    image(walk[Math.floor(this.animationIndex) % 4], this.cameraOffset, this.pos.y + 15, 50, 50);
     pop();
   }
 }
