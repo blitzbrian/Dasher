@@ -4,10 +4,10 @@ class Player {
     this.pos = createVector(0, height / 3.5);
     this.vel = createVector();
     this.acc = createVector();
-    this.cameraOffset = width / 6;
   }
 
   update() {
+    this.cameraOffset = width / 6;
     this.animationIndex += 0.0075 * deltaTime;
     if (!grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50)) this.acc.y += 0.1;
     else this.acc.y = 0;
