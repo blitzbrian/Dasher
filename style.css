@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: rgb(182, 184, 214);
 }
 canvas {
   display: block;

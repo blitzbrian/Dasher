@@ -21,7 +21,7 @@ class Player {
   show() {
     push();
     imageMode(CENTER);
-    image(walk[Math.floor(this.animationIndex) % 4], this.cameraOffset, this.pos.y + 20, 50, 50);
+    image(walk[Math.floor(this.animationIndex) % 4], width / 6, this.pos.y + 20, 50, 50);
     pop();
   }
 }

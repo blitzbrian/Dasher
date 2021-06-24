@@ -1,4 +1,4 @@
-let particleSystem, effectManager, grid, player, walk;
+let particleSystem, effectManager, grid, player, walk, startMillis, started;
 
 function preload() {
   walk = [loadImage('player0.png'), loadImage('player1.png'), loadImage('player2.png'), loadImage('player3.png')];
@@ -7,6 +7,8 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noSmooth();
+  started = false;
+  startMillis = millis();
   particleSystem = new ParticleSystem();
   effectManager = new EffectManager();
   grid = new Grid(100, 5);
@@ -28,11 +30,15 @@ function setup() {
 
 function draw() {
   background(182, 184, 214);
+  if (player.pos.y >= height) setup();
   particleSystem.run();
-  player.update();
+  if (started) player.update();
   player.show();
   grid.show();
   effectManager.show();
+  textSize(20);
+  fill(255);
+  text('Score: ' + Math.floor((millis() - startMillis) / 1000), 50, 50);
 }
 
 function windowResized() {
@@ -45,4 +51,11 @@ class Color {
     this.g = g;
     this.b = b;
   }
+}
+
+function mousePressed() {
+  if (!started) started = true;
+}
+function keyPressed() {
+  if (!started) started = true;
 }
