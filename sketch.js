@@ -33,6 +33,7 @@ function draw() {
   if (player.pos.y >= height) setup();
   particleSystem.run();
   if (started) player.update();
+  else startMillis = millis();
   player.show();
   grid.show();
   effectManager.show();

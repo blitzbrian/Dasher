@@ -25,3 +25,13 @@ class Player {
     pop();
   }
 }
+
+class Grave {
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+  }
+
+  update() {}
+
+  show() {}
+}
