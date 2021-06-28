@@ -10,8 +10,14 @@ class Player {
     this.cameraOffset = width / 6;
     this.animationIndex += 0.01 * deltaTime;
     if (!grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50)) this.acc.y += 0.005 * deltaTime;
-    else this.acc.y = 0;
-    if (!nojump && grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && (keyIsDown(32) || mouseIsPressed)) this.acc.y = -7.5;
+    else {
+      this.jumping = false;
+      this.acc.y = 0;
+    }
+    if (!nojump && grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && (keyIsDown(32) || mouseIsPressed)) {
+      this.acc.y = -7.5;
+      this.jumping = true;
+    }
     this.vel.x += 15;
     this.vel.add(this.acc);
     this.vel.limit(10);
@@ -21,7 +27,8 @@ class Player {
   show() {
     push();
     imageMode(CENTER);
-    image(walk[Math.floor(this.animationIndex) % 4], width / 6, this.pos.y + 20, 50, 50);
+    if (this.jumping) image(jump, width / 6, this.pos.y - 30, 100, 100);
+    else image(walk[Math.floor(this.animationIndex) % 4], width / 6, this.pos.y + 20, 50, 50);
     pop();
   }
 }

@@ -1,8 +1,9 @@
-let particleSystem, effectManager, grid, player, walk, startMillis, started, grave, graves, nojump;
+let particleSystem, effectManager, grid, player, walk, startMillis, started, grave, graves, nojump, jump;
 
 function preload() {
   walk = [loadImage('player0.png'), loadImage('player1.png'), loadImage('player2.png'), loadImage('player3.png')];
   grave = loadImage('grave.png');
+  jump = loadImage('player4.png');
 }
 
 function setup() {
@@ -34,10 +35,16 @@ function setup() {
 
 function draw() {
   background('#e9c46a');
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  fill('#e76f51');
   if (player.pos.y >= height) reset();
   particleSystem.run();
   if (started) player.update();
-  else startMillis = millis();
+  else {
+    text('Klik op scherm of een knop om te starten.', width / 2, height / 3);
+    startMillis = millis();
+  }
   player.show();
   grid.show();
   effectManager.show();
@@ -45,8 +52,7 @@ function draw() {
     grave.show();
     grave.update();
   });
-  textSize(20);
-  fill('#e76f51');
+  textAlign(LEFT, TOP);
   text('Score: ' + Math.floor((millis() - startMillis) / 1000), 50, 50);
 }
 
