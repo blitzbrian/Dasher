@@ -11,7 +11,7 @@ class Player {
     this.animationIndex += 0.01 * deltaTime;
     if (!grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50)) this.acc.y += 0.005 * deltaTime;
     else this.acc.y = 0;
-    if (grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && (keyIsDown(32) || mouseIsPressed)) this.acc.y = -7.5;
+    if (!nojump && grid.isThere(this.pos.x + this.cameraOffset, this.pos.y + 50) && (keyIsDown(32) || mouseIsPressed)) this.acc.y = -7.5;
     this.vel.x += 15;
     this.vel.add(this.acc);
     this.vel.limit(10);
@@ -27,11 +27,19 @@ class Player {
 }
 
 class Grave {
-  constructor(x, y) {
-    this.pos = createVector(x, y);
+  constructor(x) {
+    this.pos = createVector(x, 350);
   }
 
-  update() {}
+  update() {
+    if (dist(this.pos.x - 200, this.pos.y, player.pos.x, player.pos.y) <= 100) reset();
+  }
 
-  show() {}
+  show() {
+    push();
+    translate(-player.pos.x, height >= 500 ? 0 : height - 500);
+    imageMode(CENTER);
+    image(grave, this.pos.x, this.pos.y, 100, 100);
+    pop();
+  }
 }
