@@ -27,7 +27,7 @@ class Player {
   show() {
     push();
     imageMode(CENTER);
-    if (this.jumping) image(jump, width / 6, this.pos.y - 30, 100, 100);
+    if (this.jumping) image(jump, width / 6 - 20, this.pos.y - 30, 100, 100);
     else image(walk[Math.floor(this.animationIndex) % 4], width / 6, this.pos.y + 20, 50, 50);
     pop();
   }
