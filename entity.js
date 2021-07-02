@@ -39,7 +39,7 @@ class Grave {
   }
 
   update() {
-    if (dist(this.pos.x - 200, this.pos.y + 50, player.pos.x, player.pos.y) <= 100) reset();
+    if (dist(this.pos.x - 125, this.pos.y, player.pos.x, player.pos.y) <= 100) reset();
   }
 
   show() {
