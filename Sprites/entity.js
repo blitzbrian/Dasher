@@ -18,7 +18,7 @@ class Player {
       this.acc.y = -7.5;
       this.jumping = true;
     }
-    this.vel.x += 15;
+    if (this.pos.y <= 375) this.vel.x += 15;
     this.vel.add(this.acc);
     this.vel.limit(10);
     this.pos.add(p5.Vector.mult(this.vel, deltaTime / 15));
@@ -38,7 +38,7 @@ class Grave {
   }
 
   update() {
-    if (dist(this.pos.x - 200, this.pos.y, player.pos.x, player.pos.y) <= 100) reset();
+    if (dist(this.pos.x - 200, this.pos.y + 50, player.pos.x, player.pos.y) <= 100) reset();
   }
 
   show() {

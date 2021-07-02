@@ -25,8 +25,12 @@ class Grid {
   }
 
   add(row, col, color) {
-    this.grid[row - 1][col - 1].color = color;
-    this.grid[row - 1][col - 1].show();
+    try {
+      this.grid[row - 1][col - 1].color = color;
+      this.grid[row - 1][col - 1].show();
+    } catch {
+      console.log('Grid error (This is normal)');
+    }
   }
 
   remove(row, col) {

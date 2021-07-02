@@ -15,21 +15,17 @@ function setup() {
   startMillis = millis();
   particleSystem = new ParticleSystem();
   effectManager = new EffectManager();
-  grid = new Grid(100, 5);
+  grid = new Grid(1000, 5);
   player = new Player();
-  for (let i = 0; i < 100; i++) grid.add(i + 1, 5, new Color(42, 157, 143));
-  grid.remove(61, 5);
-  grid.remove(60, 5);
-  grid.remove(59, 5);
-  grid.remove(58, 5);
-  grid.remove(57, 5);
-  grid.remove(56, 5);
-  grid.remove(55, 5);
-  grid.remove(54, 5);
-  grid.remove(53, 5);
-  grid.remove(52, 5);
-  grid.remove(51, 5);
-  grid.remove(50, 5);
+  let x = 20;
+  for (let i = 0; i < 20; i++) grid.add(i, 5, new Color(42, 157, 143));
+  while (x < 1000) {
+    let gap = Math.floor(random(10, 15));
+    x += gap;
+    let platform = Math.floor(random(15, 30));
+    for (let i = 0; i < platform; i++) grid.add(i + x, 5, new Color(42, 157, 143));
+    x += platform;
+  }
 }
 
 function draw() {
